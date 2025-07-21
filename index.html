@@ -11,32 +11,34 @@
         <h1>Calculator Challenge</h1>
     </header>
     <main>
-        <div class="calculator__grid">
-          <button class="calculator__button--active" id="calculator__button--mr">MR</button>
-            <button class="calculator__button--active" id="calculator__button--mc">MC</button>
-            <button class="calculator__button--active" id="calculator__button--mplus">M+</button>
-            <button class="calculator__button--active" id="calculator__button--mminus">M-</button>
-            <button class="calculator__button--active" id="calculator__button--percent">%</button>
-            <button class="calculator__button--active" id="calculator__button--arrow">→</button>
-            <button class="calculator__button--active" id="calculator__button--seven">7</button>
-            <button class="calculator__button--active" id="calculator__button--eight">8</button>
-            <button class="calculator__button--active" id="calculator__button--nine">9</button>
-            <button class="calculator__button--active" id="calculator__button--divide">÷</button>
-            <button class="calculator__button--active" id="calculator__button--clear">CE</button>
-            <button class="calculator__button--active" id="calculator__button--four">4</button>
-            <button class="calculator__button--active" id="calculator__button--five">5</button>
-            <button class="calculator__button--active" id="calculator__button--six">6</button>
-            <button class="calculator__button--active" id="calculator__button--multiply">×</button>
-            <button class="calculator__button--active" id="calculator__button--ac">AC</button>
-            <button class="calculator__button--active" id="calculator__button--one">1</button>
-            <button class="calculator__button--active" id="calculator__button--two">2</button>
-            <button class="calculator__button--active" id="calculator__button--three">3</button>
-            <button class="calculator__button--active" id="calculator__button--subtract">−</button>
-            <button class="calculator__button--active" id="calculator__button--zero">0</button>
-            <button class="calculator__button--active" id="calculator__button--00">00</button>
-            <button class="calculator__button--active" id="calculator__button--decimal">.</button>
-            <button class="calculator__button--active" id="calculator__button--equals">=</button>
-            <button class="calculator__button--active" id="calculator__button--add">+</button>
+        <div id="calculator__grid">
+        <input id="calculator__display" readonly>
+        <div id="calculator__buttons">
+            <button onclick="appendToDisplay('MR')">MR</button>
+            <button onclick="appendToDisplay('MC')">MC</button>
+            <button onclick="appendToDisplay('M+')">M+</button>
+            <button onclick="appendToDisplay('M-')">M-</button>
+            <button onclick="appendToDisplay('%')">%</button>
+            <button onclick="appendToDisplay('→')">→</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('÷')">÷</button>
+            <button onclick="appendToDisplay('CE')">CE</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('x')">x</button>
+            <button onclick="appendToDisplay('AC')">AC</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('-')">-</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('00')">00</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="appendToDisplay('=')">=</button>
+            <button onclick="appendToDisplay('+')">+</button>
         </div>
     </main>
 </body>
