@@ -11,37 +11,39 @@
         <h1 class='h1__title'>Calculator Challenge</h1>
     </header>
     <main>
-        <div id="calculator__grid">
-        <input id="calculator__display" readonly>
-        <div id="calculator__buttons">
-            <button onclick="appendToDisplay('MR')">MR</button>
-            <button onclick="appendToDisplay('MC')">MC</button>
-            <button onclick="appendToDisplay('M+')">M+</button>
-            <button onclick="appendToDisplay('M-')">M-</button>
-            <button onclick="appendToDisplay('%')">%</button>
-            <button onclick="appendToDisplay('√')">√</button>
-            <button onclick="appendToDisplay('7')">7</button>
-            <button onclick="appendToDisplay('8')">8</button>
-            <button onclick="appendToDisplay('9')">9</button>
-            <button onclick="appendToDisplay('÷')">÷</button>
-            <button onclick="clearDisplay()">CE</button>
-            <button onclick="appendToDisplay('4')">4</button>
-            <button onclick="appendToDisplay('5')">5</button>
-            <button onclick="appendToDisplay('6')">6</button>
-            <button onclick="appendToDisplay('x')">x</button>
-            <button onclick="appendToDisplay('AC')">AC</button>
-            <button onclick="appendToDisplay('1')">1</button>
-            <button onclick="appendToDisplay('2')">2</button>
-            <button onclick="appendToDisplay('3')">3</button>
-            <button onclick="appendToDisplay('-')">-</button>
-            <button onclick="appendToDisplay('0')">0</button>
-            <button onclick="appendToDisplay('00')">00</button>
-            <button onclick="appendToDisplay('.')">.</button>
-            <button onclick="calculate()">=</button>
-            <button onclick="appendToDisplay('+')">+</button>
+        <section id="calculator__output">
+          <div id="calculator__expression"></div>
+          <div id="calculator__result"></div>
+        </section>
+        <section id="calculator__input">
+            <button class="calculator__button" data-action="memory-recall" data-value="MR">MR</button>
+            <button class="calculator__button" data-action="memory-clear" data-value="MC">MC</button>
+            <button class="calculator__button" data-action="memory-add" data-value="M+">M+</button>
+            <button class="calculator__button" data-action="memory-subtract" data-value="M-">M-</button>
+            <button class="calculator__button" data-action="percentage" data-value="%">%</button>
+            <button class="calculator__button" data-action="square-root" data-value="√">√</button>
+            <button class="calculator__button" data-action="number" data-value="7">7</button>
+            <button class="calculator__button" data-action="number" data-value="8">8</button>
+            <button class="calculator__button" data-action="number" data-value="9">9</button>
+            <button class="calculator__button" data-action="division" data-value="÷">÷</button>
+            <button class="calculator__button" data-action="clear" data-value="CE">CE</button>
+            <button class="calculator__button" data-action="number" data-value="4">4</button>
+            <button class="calculator__button" data-action="number" data-value="5">5</button>
+            <button class="calculator__button" data-action="number" data-value="6">6</button>
+            <button class="calculator__button" data-action="multiplication" data-value="x">x</button>
+            <button class="calculator__button" data-action="all-clear" data-value="AC">AC</button>
+            <button class="calculator__button" data-action="number" data-value="1">1</button>
+            <button class="calculator__button" data-action="number" data-value="2">2</button>
+            <button class="calculator__button" data-action="number" data-value="3">3</button>
+            <button class="calculator__button" data-action="subtraction" data-value="-">-</button>
+            <button class="calculator__button" data-action="number" data-value="0">0</button>
+            <button class="calculator__button" data-action="number" data-value="00">00</button>
+            <button class="calculator__button" data-action="number" data-value=".">.</button>
+            <button class="calculator__button" data-action="equals" data-value="=">=</button>
+            <button class="calculator__button" data-action="addition" data-value="+">+</button>
         </div>
     </main>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
     </main>
