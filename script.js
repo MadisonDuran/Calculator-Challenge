@@ -24,7 +24,21 @@ switch (action) {
     case 'clear':
         clear();
         break;
-
+        // Add the result to expression as a starting point if expression is empty
+    case 'addition':
+    case 'subtraction':
+    case 'multiplication':
+    case 'division':
+        if (calculator__expression === '' && calculator__result !== '') {
+          startFromCalculatorResult(value);
+        } else if (calculator__expression !== '' && !isLastCharOperator
+        ()) {
+            addValue(value);
+        }
+        break;
+        case 'submit':
+            submit();
+            break;
 }
 
 // Update display
@@ -47,4 +61,40 @@ function updateDisplay(calculator__expression, calculator__result) {
 function clear() {
     calculator__expression = '';
     calculator__result = '';
+}
+
+function isLastCharOperator() {
+    return isNaN(parseInt(calculator__expression.slice(-1)));
+}
+
+function startFromCalculatorResult(value) {
+    calculator__expression += calculator__result + value;
+}
+
+function submit() {
+    if (!calculator__expression) return; // Prevent submit on empty
+    calculator__result = evaluateCalculatorExpression();
+    updateDisplay(calculator__expression, calculator__result);
+    calculator__expression = '';
+    updateDisplay(calculator__expression, calculator__result); // Clear expression from display
+}
+
+function evaluateCalculatorExpression() {
+    if (!calculator__expression) return '';
+    try {
+        const safeExpression = calculator__expression
+            .replace(/×|x/g, '*')
+            .replace(/÷/g, '/');
+        const evalCalculatorResult = eval(safeExpression);
+
+        if (isNaN(evalCalculatorResult) || !isFinite(evalCalculatorResult)) {
+            return ' ';
+        } else if (evalCalculatorResult < 1) {
+            return parseFloat(evalCalculatorResult.toFixed(10));
+        } else {
+            return parseFloat(evalCalculatorResult.toFixed(2));
+        }
+    } catch (e) {
+        return 'Error';
+    }
 }
