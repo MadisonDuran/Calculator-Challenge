@@ -85,10 +85,14 @@ function evaluateCalculatorExpression() {
         const safeExpression = calculator__expression
             .replace(/×|x/g, '*')
             .replace(/÷/g, '/');
+        // Check for division by zero
+        if (/\/0(?!\d)/.test(safeExpression)) {
+            return 'Error';
+        }
         const evalCalculatorResult = eval(safeExpression);
 
         if (isNaN(evalCalculatorResult) || !isFinite(evalCalculatorResult)) {
-            return ' ';
+            return 'Error';
         } else if (evalCalculatorResult < 1) {
             return parseFloat(evalCalculatorResult.toFixed(10));
         } else {
