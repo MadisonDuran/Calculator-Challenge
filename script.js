@@ -7,24 +7,25 @@ const calculator__resultDiv = document.getElementById('calculator__result')
 let calculator__expression = '';
 let calculator__result = '';
 
-// Define event handler for button clicks
+// Event Listener - Handles all button clicks
+calculator__inputBox.addEventListener('click', buttonClick);
 
 function buttonClick(event) {
     // Get values from clicked button
     const target = event.target;
     const action = target.dataset.action;
     const value = target.dataset.value;
-    //console.log(target, action, value);
 
 // Switch case to control the calculator
 switch (action) {
-    case 'number':
+    case 'number': // Numbers (0-9, ., 00)
         addValue(value);
         break;
-    case 'clear':
+    case 'clear': // C - clears current input
+    case 'all-clear': // AC - clears everything
         clear();
         break;
-        // Add the result to expression as a starting point if expression is empty
+        // Operators (+, -, x, /,)
     case 'addition':
     case 'subtraction':
     case 'multiplication':
@@ -37,14 +38,14 @@ switch (action) {
         }
         break;
         case 'submit':
-            submit();
+            submit(); // evaluates the final expression
             break;
-        case 'percentage':
+        case 'percentage': // % percentage
             if (calculator__expression !== '' && !isLastCharOperator()) {
                 addValue('/100');
             }
             break;
-        case 'square-root':
+        case 'square-root': // square root 
             if (calculator__expression !== '' && !isLastCharOperator()) {
               applySquareRoot();
             }
@@ -54,40 +55,38 @@ switch (action) {
 // Update display
 updateDisplay(calculator__expression, calculator__result)
 }
-
-calculator__inputBox.addEventListener('click', buttonClick);
-
+// Add value - Add numbers or symbols to the expression
 function addValue(value) {
     // Add value to expression
     calculator__expression += value;
     //console.log(calculator__expression);
 }
-
+// Updates display - Updates the expression & result on screen
 function updateDisplay(calculator__expression, calculator__result) {
     calculator__expressionDiv.textContent = calculator__expression;
     calculator__resultDiv.textContent = calculator__result;
 }
-
+// Clear - Reset calculator display
 function clear() {
     calculator__expression = '';
     calculator__result = '';
 }
-
+// Check Last character - prevents multiple operators
 function isLastCharOperator() {
     return isNaN(parseInt(calculator__expression.slice(-1)));
 }
-
+// Start from result - continues calculation from previous result
 function startFromCalculatorResult(value) {
     calculator__expression += calculator__result + value;
 }
-
+// Submit - evaluates the full expression and shows result
 function submit() {
     if (!calculator__expression) return; // Prevent submit on empty
     calculator__result = evaluateCalculatorExpression();
     updateDisplay(calculator__expression, calculator__result);
     calculator__expression = '';
 }
-
+// Evaluate expression - Safety evaluates mathematical expressions
 function evaluateCalculatorExpression() {
     if (!calculator__expression) return '';
     try {
@@ -111,7 +110,7 @@ function evaluateCalculatorExpression() {
         return 'Error';
     }
 }
-
+// Covnvert to percentage - Taking a number and turning it into percentage form by dividing it by 100
 function convertToPercentage() {
     try {
         const match = calculator__expression.match(/(\d+(\.\d+)?)$/);
@@ -126,7 +125,7 @@ function convertToPercentage() {
         updateDisplay(calculator__expression, calculator__result);
     }
 }
-
+// Apply square root - calculates the square root of the last entered number and updates the display
 function applySquareRoot() {
     try {
         const match = calculator__expression.match(/(\d+(\.\d+)?)$/);
