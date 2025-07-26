@@ -39,6 +39,11 @@ switch (action) {
         case 'submit':
             submit();
             break;
+        case 'percentage':
+            if (calculator__expression !== '' && !isLastCharOperator()) {
+                addValue('/100');
+            }
+            break;
 }
 
 // Update display
@@ -100,5 +105,20 @@ function evaluateCalculatorExpression() {
         }
     } catch (e) {
         return 'Error';
+    }
+}
+
+function convertToPercentage() {
+    try {
+        const match = calculator__expression.match(/(\d+(\.\d+)?)$/);
+        if (match) {
+            const lastNumber = parseFloat(match[0]);
+            const percentageValue = (lastNumber / 100).toString();
+            calculator__expression =calculator__expression.replace(/(\d+(\.\d+)?)$/, percentageValue);
+            updateDisplay(calculator__expression, calculator__result);
+        }
+    } catch (e) {
+        calculator__result = 'Error';
+        updateDisplay(calculator__expression, calculator__result);
     }
 }
