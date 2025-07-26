@@ -44,6 +44,11 @@ switch (action) {
                 addValue('/100');
             }
             break;
+        case 'square-root':
+            if (calculator__expression !== '' && !isLastCharOperator()) {
+              applySquareRoot();
+            }
+            break;
 }
 
 // Update display
@@ -81,7 +86,6 @@ function submit() {
     calculator__result = evaluateCalculatorExpression();
     updateDisplay(calculator__expression, calculator__result);
     calculator__expression = '';
-    updateDisplay(calculator__expression, calculator__result); // Clear expression from display
 }
 
 function evaluateCalculatorExpression() {
@@ -122,3 +126,24 @@ function convertToPercentage() {
         updateDisplay(calculator__expression, calculator__result);
     }
 }
+
+function applySquareRoot() {
+    try {
+        const match = calculator__expression.match(/(\d+(\.\d+)?)$/);
+        if (match) {
+          const lastNumber = parseFloat(match[0]);
+          if (lastNumber < 0) {
+            calculator__result = 'Error';
+            updateDisplay(calculator__expression, calculator__result);
+            return;
+          }
+          const sqrtValue = Math.sqrt(lastNumber). toString();
+          calculator__expression = calculator__expression.replace(/(\d+(\.\d+)?)$/, sqrtValue);
+          updateDisplay(calculator__expression, calculator__result);
+        } 
+    } catch (e) {
+        calculator__result = 'Error';
+        updateDisplay(calculator__expression, calculator__result);
+    }
+}
+   
