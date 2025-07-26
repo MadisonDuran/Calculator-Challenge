@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator Challenge</title>
+    <!-- Link to CSS file -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
+        <!-- Page Title -->
         <h1 class='h1__title'>Calculator Challenge</h1>
     </header>
     <main>
+        <!-- Display area for the Calculator -->
         <section id="calculator__output">
+          <!-- Show's the user's current expression -->
           <div id="calculator__expression"></div>
+          <!-- Show the calculated result -->
           <div id="calculator__result"></div>
         </section>
+        <!-- Section holding all the calculator buttons -->
         <section id="calculator__input">
             <button class="calculator__button" data-action="memory-recall" data-value="MR">MR</button>
             <button class="calculator__button" data-action="memory-clear" data-value="MC">MC</button>
@@ -43,6 +49,7 @@
             <button class="calculator__button" data-action="addition" data-value="+">+</button>
         </div>
     </main>
+    <!-- Link to Javascript file -->
     <script src="script.js" defer></script>
 </body>
 </html>
