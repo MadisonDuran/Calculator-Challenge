@@ -110,14 +110,14 @@ function evaluateCalculatorExpression() {
         return 'Error';
     }
 }
-// Covnvert to percentage - Taking a number and turning it into percentage form by dividing it by 100
+// Convert to percentage - Taking a number and turning it into percentage form by dividing it by 100
 function convertToPercentage() {
     try {
         const match = calculator__expression.match(/(\d+(\.\d+)?)$/);
         if (match) {
             const lastNumber = parseFloat(match[0]);
             const percentageValue = (lastNumber / 100).toString();
-            calculator__expression =calculator__expression.replace(/(\d+(\.\d+)?)$/, percentageValue);
+            calculator__expression = calculator__expression.replace(/(\d+(\.\d+)?)$/, percentageValue);
             updateDisplay(calculator__expression, calculator__result);
         }
     } catch (e) {
@@ -125,24 +125,24 @@ function convertToPercentage() {
         updateDisplay(calculator__expression, calculator__result);
     }
 }
+
 // Apply square root - calculates the square root of the last entered number and updates the display
 function applySquareRoot() {
     try {
         const match = calculator__expression.match(/(\d+(\.\d+)?)$/);
         if (match) {
-          const lastNumber = parseFloat(match[0]);
-          if (lastNumber < 0) {
-            calculator__result = 'Error';
+            const lastNumber = parseFloat(match[0]);
+            if (lastNumber < 0) {
+                calculator__result = 'Error';
+                updateDisplay(calculator__expression, calculator__result);
+                return;
+            }
+            const sqrtValue = Math.sqrt(lastNumber).toString();
+            calculator__expression = calculator__expression.replace(/(\d+(\.\d+)?)$/, sqrtValue);
             updateDisplay(calculator__expression, calculator__result);
-            return;
-          }
-          const sqrtValue = Math.sqrt(lastNumber). toString();
-          calculator__expression = calculator__expression.replace(/(\d+(\.\d+)?)$/, sqrtValue);
-          updateDisplay(calculator__expression, calculator__result);
-        } 
+        }
     } catch (e) {
         calculator__result = 'Error';
         updateDisplay(calculator__expression, calculator__result);
     }
 }
-   
